@@ -77,6 +77,7 @@ bool AkgKernelMod::Launch(const std::vector<AddressPtr> &inputs, const std::vect
 
   rtL2Ctrl_t *l2ctrl = nullptr;
   auto stream = reinterpret_cast<rtStream_t *>(stream_ptr);
+  MS_LOG(INFO) << "gongwb begin run rtKernelLaunch.";
   if (RT_ERROR_NONE != rtKernelLaunch(reinterpret_cast<void *>(func_stub), block_dim, runtime_args.data(),
                                       SizeToUint(sizeof(void *) * runtime_args.size()), l2ctrl, stream)) {
     MS_LOG(ERROR) << "Call runtime rtKernelLaunch error.";

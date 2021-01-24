@@ -937,6 +937,7 @@ bool KernelRuntime::LaunchKernelMod(const session::KernelGraph &graph) {
       AddressPtrList kernel_workspaces;
       AddressPtrList kernel_outputs;
       GenLaunchArgs(*kernel_mod, kernel, &kernel_inputs, &kernel_workspaces, &kernel_outputs);
+      MS_LOG(INFO) << "gongwb begin run kernel_mod launch.";
       auto ret = kernel_mod->Launch(kernel_inputs, kernel_workspaces, kernel_outputs, stream_);
       if (!ret) {
         MS_LOG(ERROR) << "Launch kernel failed.";

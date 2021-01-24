@@ -14,7 +14,7 @@
 # limitations under the License.
 # ============================================================================
 
-set -e
+set -xe
 BASEPATH=$(cd "$(dirname $0)"; pwd)
 CUDA_PATH=""
 export BUILD_PATH="${BASEPATH}/build/"
@@ -398,7 +398,7 @@ build_mindspore()
     echo "start build mindspore project."
     mkdir -pv "${BUILD_PATH}/mindspore"
     cd "${BUILD_PATH}/mindspore"
-    CMAKE_ARGS="-DDEBUG_MODE=$DEBUG_MODE -DBUILD_PATH=$BUILD_PATH"
+    CMAKE_ARGS="-DDEBUG_MODE=$DEBUG_MODE -DBUILD_PATH=$BUILD_PATH -DENABLE_GE=ON -DENABLE_TRAIN=ON"
     CMAKE_ARGS="${CMAKE_ARGS} -DENABLE_LOAD_ANF_IR=$ENABLE_LOAD_IR"
     if [[ "X$ENABLE_COVERAGE" = "Xon" ]]; then
       CMAKE_ARGS="${CMAKE_ARGS} -DENABLE_COVERAGE=ON"
@@ -467,7 +467,7 @@ build_mindspore()
     if [[ -n "$VERBOSE" ]]; then
       CMAKE_VERBOSE="--verbose"
     fi
-    cmake --build . --target package ${CMAKE_VERBOSE} -j$THREAD_NUM
+    cmake --build . --target package ${CMAKE_VERBOSE} -j$THREAD_NUM 
     echo "success building mindspore project!"
 }
 

@@ -607,8 +607,10 @@ bool AscendKernelRuntime::Run(session::KernelGraph *graph, bool is_task_sink) {
   (void)gettimeofday(&start_time, nullptr);
 #endif
   if (is_task_sink) {
+    MS_LOG(INFO) << "gongwb: RunTask";
     ret = RunTask(graph);
   } else {
+    MS_LOG(INFO) << "gongwb: LaunchKernel";
     ret = LaunchKernel(graph);
   }
 #if defined(_WIN32) || defined(_WIN64)

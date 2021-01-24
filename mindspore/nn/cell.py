@@ -110,6 +110,8 @@ class Cell(Cell_):
         self._auto_parallel_compile_and_run = False
         self._support_non_tensor_inputs = False
 
+        print("gongwb cell __init__")
+
     @property
     def already_run(self):
         return self._already_run
@@ -275,7 +277,9 @@ class Cell(Cell_):
     def __del__(self):
         if context.get_context is not None and context.get_context("mode") == context.PYNATIVE_MODE:
             _pynative_exec.clear(str(id(self)))
+        print("gongwb cell __del__: del_net_res")
         if hasattr(self, "_create_time"):
+            print("gongwb cell __del__: del_net_res create time")
             _executor.del_net_res(str(self._create_time))
 
     def __delattr__(self, name):

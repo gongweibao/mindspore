@@ -273,7 +273,9 @@ py::dict ExecutorPy::GetAllreduceFusion(const std::string &phase) {
 }
 
 void ExecutorPy::DelNetRes(const std::string &id) {
+  MS_LOG(INFO) << "gongwb DelNetRes:" << id;
 #ifdef ENABLE_GE
+  MS_LOG(INFO) << "gongwb begin FinalizeBackend";
   FinalizeBackend();
 #else
   ConfigManager::GetInstance().ResetIterNum();

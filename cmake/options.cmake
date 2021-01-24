@@ -74,8 +74,11 @@ if (ENABLE_CPU)
 endif()
 
 if (ENABLE_GE)
+    message(STATUS "gongwb enable_ge")
     add_compile_definitions(ENABLE_GE)
     add_compile_definitions(CUSTOM_OP)
+else()
+    message(STATUS "gongwb not enable_ge")
 endif()
 
 if(ENABLE_TRAIN)

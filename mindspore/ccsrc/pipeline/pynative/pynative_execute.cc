@@ -1272,6 +1272,7 @@ MsBackendPolicy PynativeExecutor::InitEnv(const OpExecInfoPtr &op_exec_info) {
   parse::python_adapter::set_python_env_flag(true);
   MsBackendPolicy backend_policy;
 #if (!defined ENABLE_GE)
+  MS_LOG(INFO) << "gongwb not enable_ge InitEnv";
   auto ms_context = MsContext::GetInstance();
   MS_EXCEPTION_IF_NULL(ms_context);
   if (!context::IsTsdOpened(ms_context)) {
@@ -1285,6 +1286,7 @@ MsBackendPolicy PynativeExecutor::InitEnv(const OpExecInfoPtr &op_exec_info) {
     backend_policy = kMsBackendVmOnly;
   }
 #else
+  MS_LOG(INFO) << "gongwb InitEnv enable_ge";
   auto ms_context = MsContext::GetInstance();
   MS_EXCEPTION_IF_NULL(ms_context);
   context::PynativeInitGe(ms_context);
