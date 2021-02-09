@@ -30,7 +30,7 @@ using AddressPtrList = std::vector<mindspore::kernel::AddressPtr>;
 bool TbeKernelMod::Launch(const std::vector<mindspore::kernel::AddressPtr> &inputs,
                           const std::vector<mindspore::kernel::AddressPtr> &workspace,
                           const std::vector<mindspore::kernel::AddressPtr> &outputs, void *stream_ptr) {
-  MS_LOG(ERROR) << "gongwb tbe kerenel launch";
+  MS_LOG(DEBUG) << "gongwb tbe kerenel launch";
   if (stream_ptr == nullptr) {
     MS_LOG(ERROR) << "stream_ptr should not be nullptr.";
     return false;

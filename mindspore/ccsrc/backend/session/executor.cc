@@ -133,12 +133,16 @@ void RunGraphTask::Run() {
 
 void RunOpTask::Run() {
   MS_EXCEPTION_IF_NULL(session_);
+  MS_LOG(ERROR) << "[begin] RunOpTask::Run";
   session_->RunOpImpl(graph_info_, op_run_info_, input_tensors_, &outputs_, tensors_mask_);
+  MS_LOG(ERROR) << "[end] RunOpTask::Run";
 }
 
 void RunOpsInGraphTask::Run() {
   MS_EXCEPTION_IF_NULL(session_);
+  MS_LOG(ERROR) << "[begin] RunOpInGraphTask::Run";
   session_->RunOpsInGraphImpl(graph_id_, input_tensors_, &outputs_);
+  MS_LOG(ERROR) << "[end] RunOpInGraphTask::Run";
 }
 
 void CreateCommGroupTask::Run() { result_ = CommManager::GetInstance().CreateGroupSync(group_name_, ranks_); }
